@@ -1,0 +1,154 @@
+#userdiv{
+  text-align: center;
+}
+h2{
+  position: relative;
+  right: 20px;
+  text-align: center;
+  font-family: Comic Sans MS;
+  font-size: 30px;
+  text-shadow: 2px 2px 5px #ccc;
+}
+#myForm{
+  position: relative;
+  right: 20px;
+  text-align: center;
+}
+.submitForm{
+  padding: 12px 20px;
+  margin: 8px 20px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  outline: none;
+}
+.submitForm:hover {
+  border: 3px solid #555;
+  cursor:pointer;
+}
+.submitForm:disabled{
+  cursor:not-allowed;
+}
+#confirm{
+  position: relative;
+  left: -12px;
+  padding: 12px 20px;
+  margin: 8px 20px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  outline: none;
+}
+#confirm:hover {
+  border: 3px solid #555;
+  cursor:pointer;
+}
+.input{
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  outline: none;
+}
+.input:focus {
+  border: 3px solid #555;
+}
+.colname{
+  display: inline-block;
+  width: 130px;
+  text-align: end;
+  margin-right: 20px;
+  font-family: Papyrus;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+}
+#date{
+  position: relative;
+  right: 30px;
+}
+#time{
+  position: relative;
+  right: 30px;
+}
+#partySize{
+  width: 330px;
+}
+.input-group{
+  float: none;
+  margin: auto;
+  width: 410px;
+}
+#info{
+  position: relative;
+  right: 70px;
+}
+.alert{
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid red;
+  border-radius: 5px;
+  outline: none;
+  font-family: Papyrus;
+  font-weight: bold;
+  background-color: pink;
+}
+.alertg{
+  display: inline-block;
+  position: relative;
+  left: 78px;
+  width: 330px;
+}
+#success{
+  position: relative;
+  right: 15px;
+  text-align: center;
+  padding: 12px 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: 3px solid black;
+  border-radius: 5px;
+  outline: none;
+  font-family: Papyrus;
+  font-weight: bold;
+  font-size: 20px;
+  width: 400px;
+  background-color: lightgreen;
+}
+@media only screen and (max-width: 700px) {
+  #info{
+    position: relative;
+    left: 3%;
+    right: 0px;
+  }
+  .input{
+    width: 80%;
+  }
+  #partySize{
+    width: 80%;
+  }
+  .input-group{
+    width: 80%;
+  }
+  .alertg{
+    position: relative;
+    left: 0%;
+    width: 80%;
+  }
+  #success{
+    left: 0%;
+    width: 80%;
+  }
+  #confirm{
+    left: 0%;
+    width: 80%;
+  }
+}

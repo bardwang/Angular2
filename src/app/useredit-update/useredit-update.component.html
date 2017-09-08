@@ -1,0 +1,44 @@
+<form [hidden]="formShow()" #userForm="ngForm" class="myForm">
+    <h2>Hello {{booking.name}}, please update your booking</h2>
+    <h2>Booking Status: {{booking.status}}</h2>
+  <div class="form-group">
+    <span class="colname" id="date">Date:</span>
+    <div class="input-group date form_date col-xs-3" data-date="" data-date-format="mm-dd-yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+      <input id="dateInput" class="form-control" size="16" type="text" value={{booking.date}} required readonly>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+    </div>
+    <input type="hidden" id="dtp_input2" value="" /><br/>
+  </div>
+  <div class="form-group">
+    <span class="colname" id="time">Time:</span>
+    <div class="input-group date form_time col-xs-3" data-date="" data-date-format="hh-ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+      <input id="timeInput" class="form-control" size="16" type="text" value={{booking.time}} required readonly>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+    </div>
+    <input type="hidden" id="dtp_input3" value="" /><br/>
+  </div>
+  <div id="info">
+    <span class="colname">Party Size:</span>
+    <select id="partySize" class="input" name="party" value={{booking.partysize}} #partyRef>
+      <option value="1">1 Persons</option>
+      <option value="2">2 Persons</option>
+      <option value="3">3 Persons</option>
+      <option value="4">4 Persons</option>
+      <option value="5">5 Persons</option>
+      <option value="6">6 Persons</option>
+      <option value="7">7 Persons</option>
+      <option value="8">8 Persons</option>
+      <option value="9">9 Persons</option>
+      <option value="10">10 Persons</option>
+      <option value="11">More than 10 Persons</option>
+    </select><br>
+  </div>
+  <br>
+  <input [disabled]="checkDateTime() || booking.status === 'Complete'" class="submitForm" type="submit" value="Update" (click)="updateBooking(partyRef.value)">
+  <input id="cancel" [disabled]="checkDateTime() || booking.status === 'Complete'" class="submitForm" type="submit" value="Cancel Booking" (click)="cancelBooking()">
+  </form>
+  <br>
+  <div class="success" *ngIf="successShow()">You have updated the booking successfully</div>
+  <div class="success" *ngIf="cancelShow()">You have cancelled the booking successfully</div>

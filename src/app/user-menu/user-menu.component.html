@@ -1,0 +1,10 @@
+<div id="menu" [ngSwitch]="myVal">
+  <div *ngSwitchCase="1">
+    <h2>User Menu</h2>
+    <button class="submitForm" (click)="myVal = 2">Create a Booking</button><br>
+    <button class="submitForm" (click)="myVal = 3">Edit/Cancel a Booking</button><br>
+    <button class="submitForm" (click)="logout()">Log Out</button>
+  </div>
+  <app-usercreate *ngSwitchCase="2"></app-usercreate>
+  <app-useredit *ngSwitchCase="3"></app-useredit>
+</div>

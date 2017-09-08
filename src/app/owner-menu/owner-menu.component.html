@@ -1,0 +1,32 @@
+<div id="menu" [ngSwitch]="myVal">
+  <div *ngSwitchCase="1">
+    <h2>Owner Menu</h2>
+    <button class="submitForm" (click)="myVal = 2">View Booking</button><br>
+    <button class="submitForm" (click)="myVal = 3">View Seating Area</button><br>
+    <button class="submitForm" (click)="modal1.open()">Edit Company Contact Information</button><br>
+    <button class="submitForm" (click)="logout()">Log Out</button>
+  </div>
+  <modal #modal1>
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">Contact Information</h4>
+    </modal-header>
+    <modal-body>
+      <table class="table table-striped">
+        <tr><td>Name:</td><td><input type="text" #nameRef class="form-control" value="{{info.name}}"/></td></tr>
+        <tr><td>Address:</td><td><input type="text" #addressRef class="form-control" value="{{info.address}}"/></td></tr>
+        <tr><td>Telephone:</td><td><input type="text" #telephoneRef class="form-control" value="{{info.tel}}"/></td></tr>
+        <tr><td>Email:</td><td><input type="text" #emailRef class="form-control" value="{{info.email}}"/></td></tr>
+      </table>
+      <label for="content1">Please enter the content:</label>
+      <textarea class="form-control" id="content1" #contentRef value="{{info.content}}">
+      </textarea>
+    </modal-body>
+    <modal-footer>
+      <button type="button" class="btn btn-primary" (click)="save(nameRef.value, addressRef.value, telephoneRef.value, emailRef.value, contentRef.value);modal1.close();">Save</button>
+      <button type="button" class="btn btn-primary" (click)="modal1.close();">Close</button>
+    </modal-footer>
+  </modal>
+  <app-owner-view-booking *ngSwitchCase="2"></app-owner-view-booking>
+  <app-owner-view-seating-area *ngSwitchCase="3"></app-owner-view-seating-area>
+</div>
+

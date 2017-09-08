@@ -1,0 +1,30 @@
+<div>
+  <div id="success">{{content.content}}
+  <img id="moreImg" src="../../assets/more.png" width="40px" (click)="modal1.open()" />
+  </div>
+  <modal #modal1>
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">Contact Information</h4>
+    </modal-header>
+    <modal-body>
+      <table class="table table-striped">
+        <tr><td>Name:</td><td>{{content.name}}</td></tr>
+        <tr><td>Address:</td><td>{{content.address}}</td></tr>
+        <tr><td>Telephone:</td><td>{{content.tel}}</td></tr>
+        <tr><td>Email:</td><td>{{content.email}}</td></tr>
+      </table>
+    </modal-body>
+    <modal-footer>
+      <button type="button" class="btn btn-primary" (click)="modal1.close()">Close</button>
+    </modal-footer>
+  </modal>
+  <br>
+  <div class="carousel">
+    <ul class="slides">
+      <li *ngFor="let image of images">
+        <h2>{{image.title}}</h2>
+        <img src="{{image.url}}" alt="">
+      </li>
+    </ul>
+  </div>
+</div>

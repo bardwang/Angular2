@@ -1,0 +1,51 @@
+h2{
+  position: relative;
+  right: 20px;
+  text-align: center;
+  font-family: Comic Sans MS;
+  font-size: 30px;
+  text-shadow: 2px 2px 5px #ccc;
+}
+.submitForm{
+  width: 300px;
+  position: relative;
+  left: -12px;
+  padding: 12px 20px;
+  margin: 8px 20px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  outline: none;
+}
+.submitForm:hover {
+  border: 3px solid #555;
+  cursor:pointer;
+}
+#success{
+  text-align: center;
+  padding: 12px 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: 3px solid black;
+  border-radius: 5px;
+  outline: none;
+  font-family: Papyrus;
+  font-weight: bold;
+  font-size: 20px;
+  width: 40%;
+  background-color: lightgreen;
+}
+#menu{
+  text-align: center;
+}
+@media only screen and (max-width: 700px) {
+  .submitForm{
+    width: 80%;
+  }
+  #success{
+    width: 80%;
+  }
+}
+

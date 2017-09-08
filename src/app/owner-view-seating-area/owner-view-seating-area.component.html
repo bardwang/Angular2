@@ -1,0 +1,53 @@
+
+
+<h2>View Seating Area</h2>
+<span class="colname">Please select a seating area</span>
+<select class="input" [(ngModel)]="area">
+  <option value="all">All</option>
+  <option value="A">A</option>
+  <option value="B">B</option>
+  <option value="C">C</option>
+  <option value="D">D</option>
+</select><br>
+<span class="colname">Please select a seating table</span>
+<select class="input" [(ngModel)]="table">
+  <option value="all">All</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+</select><br>
+<div class="table">
+  <div class="item" (click)="modal1.open()" *ngFor="let booking of bookings | SeatFilter | AreaFilter:area | TableFilter:table">
+      <div class="success">
+        {{ booking.name }}<br>
+        {{ booking.area}}{{ booking.table}}<br>
+      </div><br>
+      <img src="../../assets/table.png" />
+    <modal #modal1>
+      <modal-header [show-close]="true">
+        <h4 class="modal-title">{{booking.name}}</h4>
+      </modal-header>
+      <modal-body>
+        <table class="table table-striped">
+          <tr><td>Name:</td><td>{{booking.name}}</td></tr>
+          <tr><td>Date:</td><td>{{booking.date | Date}}</td></tr>
+          <tr><td>Time:</td><td>{{booking.time | Time}}</td></tr>
+          <tr><td>Phone:</td><td>{{booking.phone}}</td></tr>
+          <tr><td>Party Size:</td><td>{{booking.partysize}}</td></tr>
+          <tr><td>Area:</td><td>{{booking.area}}</td></tr>
+          <tr><td>Table:</td><td>{{booking.table}}</td></tr>
+          <tr><td>Status:</td><td>{{booking.status}}</td></tr>
+          <tr><td>Confirmation Code:</td><td>{{booking._id}}</td></tr>
+        </table>
+      </modal-body>
+      <modal-footer>
+        <button type="button" class="btn btn-primary" (click)="modal1.close()">Close</button>
+      </modal-footer>
+    </modal>
+  </div>
+</div>

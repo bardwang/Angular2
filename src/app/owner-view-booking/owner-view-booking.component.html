@@ -1,0 +1,98 @@
+<div id="menu">
+  <h2>View all the bookingss</h2>
+  <button class="submitBtn" (click)="modal2.open()">Click to Search</button>
+  <button class="submitBtn" (click)="reset()">Reset</button>
+  <table id="myTable" class="table table-striped">
+    <tr><td>Date</td><td>Time</td><td>Name</td><td>Phone</td><td>Party Size</td><td>Status</td></tr>
+    <tr (click)="modal1.open()" *ngFor="let booking of bookings">
+      <td>{{booking.date | Date}}</td>
+      <td>{{booking.time | Time}}</td>
+      <td>{{booking.name}}</td>
+      <td>{{booking.phone}}</td>
+      <td>{{booking.partysize}}</td>
+      <td>{{booking.status}}</td>
+      <modal #modal1>
+        <modal-header [show-close]="true">
+          <h4 class="modal-title">{{booking.name}}</h4>
+        </modal-header>
+        <modal-body>
+          <button class="btn btn-primary" (click)="unlock()">{{unlockText}}</button><br><br>
+          <table class="table table-striped">
+            <tr><td>Name:</td><td><input type="text" #nameRef class="form-control" value="{{booking.name}}" [disabled]="unlockVal"/></td></tr>
+            <tr><td>Date:</td><td><input type="date" #dateRef class="form-control" value="{{booking.date | Date2}}" [disabled]="unlockVal"/></td></tr>
+            <tr><td>Time:</td><td><input type="time" #timeRef class="form-control" value="{{booking.time | Time}}" [disabled]="unlockVal"/></td></tr>
+            <tr><td>Phone:</td><td><input type="tel" #phoneRef class="form-control" value="{{booking.phone}}" [disabled]="unlockVal"/></td></tr>
+            <tr><td>Party Size:</td><td>
+              <select class="form-control" #partysizeRef value="{{booking.partysize}}" [disabled]="unlockVal">
+                <option value="1">1 Persons</option>
+                <option value="2">2 Persons</option>
+                <option value="3">3 Persons</option>
+                <option value="4">4 Persons</option>
+                <option value="5">5 Persons</option>
+                <option value="6">6 Persons</option>
+                <option value="7">7 Persons</option>
+                <option value="8">8 Persons</option>
+                <option value="9">9 Persons</option>
+                <option value="10">10 Persons</option>
+                <option value="11">More than 10 Persons</option>
+              </select>
+            </td></tr>
+            <tr><td>Area:</td><td>{{booking.area}}</td></tr>
+            <tr><td>Table:</td><td>{{booking.table}}</td></tr>
+            <tr><td>Confirmation Code:</td><td>{{booking._id}}</td></tr>
+          </table>
+          <label for="status1">Select an status (select one):</label>
+          <select class="form-control" id="status1" #statusRef value="{{booking.status}}">
+            <option value="Pending">Pending</option>
+            <option value="Complete">Complete</option>
+          </select>
+          <label for="area1">Select an area (select one):</label>
+          <select class="form-control" id="area1" #areaRef>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+          </select>
+          <label for="table1">Select a table (select one):</label>
+          <select class="form-control" id="table1" #tableRef>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+          </select>
+        </modal-body>
+        <modal-footer>
+          <button type="button" class="btn btn-primary" (click)="bookingUpdate(booking, nameRef.value,
+          dateRef.value, timeRef.value, phoneRef.value, partysizeRef.value, statusRef.value, areaRef.value, tableRef.value);modal1.close();">Assign</button>
+          <button type="button" class="btn btn-primary" (click)="modal1.close()">Close</button>
+        </modal-footer>
+      </modal>
+    </tr>
+  </table>
+  <button class="submitBtn" (click)="reload()">Back</button>
+  <modal #modal2>
+  <modal-header [show-close]="true">
+  <h4 class="modal-title">Search</h4>
+  </modal-header>
+  <modal-body>
+  <table class="table table-striped">
+  <tr><td>Name:</td><td><input type="text" class="form-control" #name/></td></tr>
+  <tr><td>Phone:</td><td><input type="phone" class="form-control" #phone/></td></tr>
+  <tr><td>Status:</td><td>
+    <select class="form-control" #status>
+    <option value="Pending">Pending</option>
+    <option value="Complete">Complete</option>
+  </select></td></tr>
+  <tr><td>Confirmation Code:</td><td><input type="text" class="form-control" #code/></td></tr>
+  </table>
+  </modal-body>
+  <modal-footer>
+  <button type="button" class="btn btn-primary" (click)="search(name.value, phone.value, status.value, code.value);modal2.close()">Search</button>
+  <button type="button" class="btn btn-primary" (click)="modal2.close()">Close</button>
+  </modal-footer>
+  </modal>
+</div>

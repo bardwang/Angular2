@@ -1,0 +1,40 @@
+<h2>Owner Register</h2>
+<form #userForm="ngForm" id="myForm" [hidden]="submit">
+  <span class="colname" >Username:</span>
+  <input class="input" type="text" size="35" placeholder="Username"
+         required minlength="5" maxlength="20" ngModel name="username" #userNameRef="ngModel" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]*"/><br>
+  <div class="alertg" *ngIf="(userNameRef.touched&&!userNameRef.valid) || userNameRef.errors?.minlength || userNameRef.errors?.pattern">
+    <div class="alert" *ngIf="userNameRef.touched&&!userNameRef.valid">Username required</div>
+    <div class="alert" *ngIf="userNameRef.errors?.minlength">Username should be minlength 5</div>
+    <div class="alert" *ngIf="userNameRef.errors?.pattern">Username invalid</div>
+  </div><br>
+  <span class="colname">Password:</span>
+  <input class="input" type="password" size="35" placeholder="Password"
+         required minlength="6" maxlength="20" ngModel name="password" #passwordRef="ngModel" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]*"/><br>
+  <div class="alertg" *ngIf="(passwordRef.touched&&!passwordRef.valid) || passwordRef.errors?.minlength || passwordRef.errors?.pattern">
+   <div class="alert" *ngIf="passwordRef.touched&&!passwordRef.valid">Password required</div>
+   <div class="alert" *ngIf="passwordRef.errors?.minlength">Password should be minlength 6</div>
+   <div class="alert" *ngIf="passwordRef.errors?.pattern">Password invalid</div>
+  </div><br>
+  <span class="colname">Confirm Password:</span>
+  <input class="input" type="password" size="35" placeholder="Confirm Password"
+         required minlength="6" maxlength="20" ngModel name="cpassword" #cpasswordRef="ngModel" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]*"/><br>
+  <div class="alertg" *ngIf="(cpasswordRef.touched&&!cpasswordRef.valid) || cpasswordRef.errors?.minlength || cpasswordRef.value !== passwordRef.value || cpasswordRef.errors?.pattern">
+   <div class="alert" *ngIf="cpasswordRef.touched&&!cpasswordRef.valid">Confirm Password required</div>
+   <div class="alert" *ngIf="cpasswordRef.errors?.minlength">Confirm Password should be minlength 6</div>
+   <div class="alert" *ngIf="cpasswordRef.value !== passwordRef.value">Password and confirm password should be the same</div>
+  <div class="alert" *ngIf="cpasswordRef.errors?.pattern">Confirm Password invalid</div>
+  </div><br>
+  <span id="email">Email:</span>
+  <input class="input" type="email" size="25" placeholder="Email" (ngModelChange)='emailChange()'
+         required  maxlength="30" ngModel name="email" #emailRef="ngModel" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" />
+  <button id="check" (click)="verify(emailRef.value)">Check</button><br>
+  <div class="alertg" *ngIf="(emailRef.touched&&!emailRef.valid) || emailRef.errors?.pattern || emailError()">
+    <div class="alert" *ngIf="emailRef.touched&&!emailRef.valid">Email required</div>
+    <div class="alert" *ngIf="emailRef.errors?.pattern">Email invalid</div>
+    <div class="alert" *ngIf="emailError()">Email already exists</div>
+  </div><br>
+  <input [disabled]="!userForm.form.valid || cpasswordRef.value !== passwordRef.value || account !== null" id="submitForm" type="submit" value="Register"  (click)="register(userNameRef.value, passwordRef.value, emailRef.value)"/>
+</form>
+<div id="success" [hidden]="!submit">You have registered the account successfully</div>
+<br><br>

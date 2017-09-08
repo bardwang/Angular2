@@ -1,0 +1,19 @@
+<div id="userdiv">
+  <form #codeForm="ngForm" [hidden]="codeSubmit && booking !== null">
+    <h2>Edit a Booking</h2>
+    <br>
+  <span class="colname">Confirmation Code:</span>
+  <input class="input"  type="tel" size="35" placeholder="Confirmation Code"
+         required name="code" ngModel #codeRef="ngModel" pattern="[0-9a-z]{24}"/><br>
+    <div class="alertg" *ngIf="booking === null && codeSubmit === true">
+      <div class="alert">Your Confirmation Code does not exists</div>
+    </div>
+  <div class="alertg" *ngIf="(codeRef.touched&&!codeRef.valid) || codeRef.errors?.pattern">
+    <div class="alert" *ngIf="codeRef.touched&&!codeRef.valid">Confirmation Code required</div>
+    <div class="alert" *ngIf="codeRef.errors?.pattern">Confirmation Code invalid</div>
+  </div><br>
+    <input [disabled]="!codeForm.form.valid" class="submitForm" type="submit" value="Submit" (click)="submitCode(codeRef.value)">
+  </form>
+  <app-useredit-update [booking]="booking" *ngIf="codeSubmit && booking !== null"></app-useredit-update>
+</div>
+

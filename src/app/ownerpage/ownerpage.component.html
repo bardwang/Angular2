@@ -1,0 +1,12 @@
+<div *ngIf="!loginSuccess()">
+  <h2>Owner Login</h2>
+  <form id="myForm">
+    <span class="colname">Email:</span><input class="input" name="email" type="email" ngModel #emailRef="ngModel" size="35" placeholder="Email"/><br>
+    <span class="colname">Password:</span><input class="input" name="password" type="password" ngModel #passwordRef="ngModel" size="35" placeholder="Password" /><br>
+    <span class="colname"></span><div id="loginF" *ngIf="loginFailed()">Your email or password is not correct</div><br>
+    <input id="submitForm" type="submit" value="Login" (click)="loginFun(emailRef.value, passwordRef.value)">
+    <button id="registerForm" (click)="registerAcc()">Register</button><br>
+  </form>
+</div>
+<app-owner-menu *ngIf="loginSuccess() && !register"></app-owner-menu>
+<app-owner-register *ngIf="register"></app-owner-register>

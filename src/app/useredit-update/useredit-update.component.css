@@ -1,0 +1,114 @@
+h2{
+  position: relative;
+  text-align: center;
+  font-family: Comic Sans MS;
+  font-size: 30px;
+  text-shadow: 2px 2px 5px #ccc;
+}
+.myForm{
+  position: relative;
+  right: 20px;
+  text-align: center;
+}
+.colname{
+  display: inline-block;
+  width: 170px;
+  text-align: end;
+  margin-right: 20px;
+  font-family: Papyrus;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+}
+.input-group{
+  float: none;
+  margin: auto;
+  width: 410px;
+}
+.input{
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  outline: none;
+}
+.input:focus {
+  border: 3px solid #555;
+}
+#date{
+  position: relative;
+  right: 30px;
+}
+#time{
+  position: relative;
+  right: 30px;
+}
+#partySize{
+  width: 330px;
+}
+#cancel:hover{
+  color: red;
+}
+.submitForm{
+  padding: 12px 20px;
+  margin: 8px 20px;
+  box-sizing: border-box;
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  outline: none;
+}
+.submitForm:hover {
+  border: 3px solid #555;
+  cursor:pointer;
+}
+.submitForm:disabled{
+  cursor:not-allowed;
+}
+.success{
+  text-align: center;
+  padding: 12px 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: 3px solid black;
+  border-radius: 5px;
+  outline: none;
+  font-family: Papyrus;
+  font-weight: bold;
+  font-size: 20px;
+  width: 40%;
+  background-color: lightgreen;
+}
+@media only screen and (max-width: 700px) {
+  .input{
+    width: 80%;
+  }
+  #partySize{
+    position: relative;
+    left: 15px;
+    width: 80%;
+  }
+  .input-group{
+    width: 80%;
+  }
+  .alertg{
+    position: relative;
+    left: 0%;
+    width: 80%;
+  }
+  .submitForm{
+    position: relative;
+    right: 0px;
+  }
+  .success{
+    width: 80%;
+  }
+  h2{
+    left: 10%;
+    width: 80%;
+  }
+}
